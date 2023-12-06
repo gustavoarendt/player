@@ -3,14 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerControl.Domain", "PlayerControl.Domain\PlayerControl.Domain.csproj", "{1DE298A1-340B-4B43-BF8B-6919CC3340A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Domain", "PlayerControl.Domain\PlayerControl.Domain.csproj", "{1DE298A1-340B-4B43-BF8B-6919CC3340A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerControl.Tests", "PlayerControl.Domain.Tests\PlayerControl.Tests.csproj", "{6B2D64F1-FB1E-46A3-8C56-9EA0C1B51BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Tests", "PlayerControl.Domain.Tests\PlayerControl.Tests.csproj", "{6B2D64F1-FB1E-46A3-8C56-9EA0C1B51BB3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1DE298A1-340B-4B43-BF8B-6919CC3340A9} = {1DE298A1-340B-4B43-BF8B-6919CC3340A9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerControl.Application", "PlayerControl.Application\PlayerControl.Application.csproj", "{7D9B16A7-398E-4118-BD9A-17E598244852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Application", "PlayerControl.Application\PlayerControl.Application.csproj", "{7D9B16A7-398E-4118-BD9A-17E598244852}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Infrastructure.Data", "PlayerControl.Infrastructure.Data\PlayerControl.Infrastructure.Data.csproj", "{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerControl.Api", "PlayerControl.Api\PlayerControl.Api.csproj", "{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,14 @@ Global
 		{7D9B16A7-398E-4118-BD9A-17E598244852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9B16A7-398E-4118-BD9A-17E598244852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9B16A7-398E-4118-BD9A-17E598244852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

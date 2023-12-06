@@ -1,4 +1,5 @@
 ﻿using Moq;
+using PlayerControl.Application.Exceptions;
 using PlayerControl.Application.UseCases.Categories.Get;
 using PlayerControl.Domain.Categories;
 using PlayerControl.Domain.Repositories;
@@ -26,6 +27,26 @@ namespace PlayerControl.Tests.Application.Categories
             // Assert
             Assert.NotNull(sut);
             Assert.Equal(request.Id, sut.Id);
+        }
+
+        [Fact(DisplayName = nameof(WhenIdIsNotFoundShouldThrowNotFoundException))]
+        public async Task WhenIdIsNotFoundShouldThrowNotFoundException()
+        {
+            // Arrange
+            var repositoryMock = new Mock<ICategoryRepository>();
+            var category = new Category("name", "description");
+            var useCase = new GetCategory(
+                repositoryMock.Object
+            );
+            var request = new GetCategoryRequest(category.Id);
+            repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException($"{nameof(Category)} of Id: {request.Id} could not be found"));
+
+            // Act
+            var sut = async () => await useCase.Handle(request, It.IsAny<CancellationToken>());
+            repositoryMock.Verify((repository) => repository.GetById(It.IsAny<Guid>()), Times.Never);
+
+            // Assert
+            await Assert.ThrowsAsync<NotFoundException>(sut);
         }
     }
 }

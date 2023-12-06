@@ -1,6 +1,4 @@
-﻿
-using PlayerControl.Application.Interfaces;
-using PlayerControl.Application.UseCases.Categories.Common;
+﻿using PlayerControl.Application.UseCases.Categories.Common;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Application.UseCases.Categories.List
