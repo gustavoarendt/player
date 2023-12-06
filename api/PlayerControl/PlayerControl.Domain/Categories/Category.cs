@@ -20,11 +20,19 @@ namespace PlayerControl.Domain.Categories
         public void Deactivate()
         {
             IsActive = false;
+            Validate();
         }
 
         public void Activate()
         {
             IsActive = true;
+            Validate();
+        }
+
+        public void UpdateData(string name, string description)
+        {
+            Name = name ?? Name;
+            Description = description ?? Description;
         }
 
         private void Validate()
