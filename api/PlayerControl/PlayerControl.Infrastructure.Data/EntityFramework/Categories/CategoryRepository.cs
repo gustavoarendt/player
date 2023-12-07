@@ -17,7 +17,7 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Categories
 
         public async Task<IEnumerable<Category>> List()
         {
-            return await Task.FromResult(_categories.AsQueryable().AsNoTracking());
+            return await Task.FromResult(_categories.AsQueryable().AsNoTracking().Where(c => c.IsActive));
         }
     }
 }

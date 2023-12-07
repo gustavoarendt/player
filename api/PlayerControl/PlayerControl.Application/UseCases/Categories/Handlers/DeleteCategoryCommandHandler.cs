@@ -1,22 +1,24 @@
 ﻿using PlayerControl.Application.Exceptions;
 using PlayerControl.Application.Interfaces;
-using PlayerControl.Application.UseCases.Categories.Common;
+using PlayerControl.Application.UseCases.Categories.Commands;
+using PlayerControl.Application.UseCases.Categories.Interfaces;
+using PlayerControl.Application.UseCases.Categories.Models;
 using PlayerControl.Domain.Repositories;
 
-namespace PlayerControl.Application.UseCases.Categories.Delete
+namespace PlayerControl.Application.UseCases.Categories.Handlers
 {
-    public class DeleteCategory : IDeleteCategory
+    public class DeleteCategoryCommandHandler : IDeleteCategory
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteCategory(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
+        public DeleteCategoryCommandHandler(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
         {
             _categoryRepository = categoryRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<CategoryResponseModel> Handle(DeleteCategoryRequest request, CancellationToken cancellationToken)
+        public async Task<CategoryResponseViewModel> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await _categoryRepository.GetById(request.Id);
             if (category is null)
@@ -26,7 +28,7 @@ namespace PlayerControl.Application.UseCases.Categories.Delete
             await _categoryRepository.Remove(category);
             await _unitOfWork.Commit();
 
-            return CategoryResponseModel.FromEntity(category);
+            return CategoryResponseViewModel.FromEntity(category);
         }
     }
 }

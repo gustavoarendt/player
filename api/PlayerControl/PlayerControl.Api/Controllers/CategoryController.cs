@@ -1,10 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PlayerControl.Application.UseCases.Categories.Common;
-using PlayerControl.Application.UseCases.Categories.Create;
-using PlayerControl.Application.UseCases.Categories.Delete;
-using PlayerControl.Application.UseCases.Categories.Get;
-using PlayerControl.Application.UseCases.Categories.Update;
+using PlayerControl.Application.UseCases.Categories.Commands;
+using PlayerControl.Application.UseCases.Categories.Models;
+using PlayerControl.Application.UseCases.Categories.Queries;
 
 namespace PlayerControl.Api.Controllers
 {
@@ -20,21 +18,21 @@ namespace PlayerControl.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(CategoryResponseModel), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
-        public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateCategoryCommand request)
         {
             var result = await _mediator.Send(request);
             return CreatedAtAction(nameof(Create), result);
         }
 
         [HttpGet("{id:guid}")]
-        [ProducesResponseType(typeof(CategoryResponseModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var result = await _mediator.Send(new GetCategoryRequest(id));
+            var result = await _mediator.Send(new GetCategoryQuery(id));
             return Ok(result);
         }
 
@@ -42,16 +40,24 @@ namespace PlayerControl.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            _ = await _mediator.Send(new DeleteCategoryRequest(id));
+            _ = await _mediator.Send(new DeleteCategoryCommand(id));
             return NoContent();
         }
 
         [HttpPut("{id:guid}")]
-        [ProducesResponseType(typeof(CategoryResponseModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryApiRequest request)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryApiInputModel request)
         {
-            var result = await _mediator.Send(new UpdateCategoryRequest(id, request.Name, request.Description, request.IsActive));
+            var result = await _mediator.Send(new UpdateCategoryCommand(id, request.Name, request.Description, request.IsActive));
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _mediator.Send(new ListCategoryQuery());
             return Ok(result);
         }
     }
