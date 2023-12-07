@@ -1,6 +1,7 @@
 ﻿using Moq;
 using PlayerControl.Application.Interfaces;
-using PlayerControl.Application.UseCases.Categories.Create;
+using PlayerControl.Application.UseCases.Categories.Commands;
+using PlayerControl.Application.UseCases.Categories.Handlers;
 using PlayerControl.Domain.Categories;
 using PlayerControl.Domain.Repositories;
 
@@ -16,11 +17,11 @@ namespace PlayerControl.Tests.Application.Categories
             var categoryDescription = "description";
             var repositoryMock = new Mock<ICategoryRepository>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var useCase = new CreateCategory(
+            var useCase = new CreateCategoryCommandHandler(
                 repositoryMock.Object,
                 unitOfWorkMock.Object
             );
-            var request = new CreateCategoryRequest(categoryName, categoryDescription);
+            var request = new CreateCategoryCommand(categoryName, categoryDescription);
             
             // Act
             var sut = await useCase.Handle(request, It.IsAny<CancellationToken>());

@@ -1,13 +1,15 @@
 ﻿using Moq;
 using PlayerControl.Application.Exceptions;
 using PlayerControl.Application.Interfaces;
-using PlayerControl.Application.UseCases.Categories.Delete;
+using PlayerControl.Application.UseCases.Categories.Commands;
+using PlayerControl.Application.UseCases.Categories.Handlers;
 using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Commons;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class DeleteCategoryTest
+    public class DeleteGenreTest
     {
         [Fact(DisplayName = nameof(DeleteCategory))]
         public async Task DeleteCategory()
@@ -15,12 +17,12 @@ namespace PlayerControl.Tests.Application.Categories
             // Arrange
             var repositoryMock = new Mock<ICategoryRepository>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var useCase = new DeleteCategory(
+            var useCase = new DeleteCategoryCommandHandler(
                 repositoryMock.Object,
                 unitOfWorkMock.Object
             );
             var category = new Category("name", "description");
-            var request = new DeleteCategoryRequest(Guid.NewGuid());
+            var request = new DeleteCategoryCommand(Guid.NewGuid());
             repositoryMock.Setup(x => x.GetById(request.Id)).ReturnsAsync(category);
 
             // Act
@@ -39,13 +41,12 @@ namespace PlayerControl.Tests.Application.Categories
             // Arrange
             var repositoryMock = new Mock<ICategoryRepository>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var useCase = new DeleteCategory(
+            var useCase = new DeleteCategoryCommandHandler(
                 repositoryMock.Object,
                 unitOfWorkMock.Object
             );
-            Category category = null!;
-            var request = new DeleteCategoryRequest(Guid.NewGuid());
-            repositoryMock.Setup(x => x.GetById(request.Id)).ReturnsAsync(category);
+            var request = new DeleteCategoryCommand(Guid.NewGuid());
+            repositoryMock.Setup(x => x.GetById(request.Id)).ThrowsAsync(new NotFoundException($"{nameof(Entity)} of Id: {request.Id} could not be found"));
 
 
             // Act

@@ -21,10 +21,6 @@ namespace PlayerControl.Application.UseCases.Categories.Handlers
         public async Task<CategoryResponseViewModel> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await _categoryRepository.GetById(request.Id);
-            if (category is null)
-            {
-                throw new NotFoundException($"{nameof(category)} with Id: {request.Id} could not be found");
-            }
             category.UpdateData(request.Name, request.Description);
             if (request.IsActive is not null && request.IsActive != category.IsActive)
                 if ((bool)request.IsActive) category.Activate();

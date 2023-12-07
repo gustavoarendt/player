@@ -1,25 +1,25 @@
 ﻿using Moq;
 using PlayerControl.Application.Exceptions;
-using PlayerControl.Application.UseCases.Categories.Handlers;
-using PlayerControl.Application.UseCases.Categories.Queries;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Application.UseCases.Genres.Handlers;
+using PlayerControl.Application.UseCases.Genres.Queries;
+using PlayerControl.Domain.Genres;
 using PlayerControl.Domain.Repositories;
 
-namespace PlayerControl.Tests.Application.Categories
+namespace PlayerControl.Tests.Application.Genres
 {
     public class GetGenreTest
     {
-        [Fact(DisplayName = nameof(GetCategory))]
-        public async Task GetCategory()
+        [Fact(DisplayName = nameof(GetGenre))]
+        public async Task GetGenre()
         {
             // Arrange
-            var repositoryMock = new Mock<ICategoryRepository>();
-            var category = new Category("name", "description");
-            var useCase = new GetCategoryQueryHandler(
+            var repositoryMock = new Mock<IGenreRepository>();
+            var genre = new Genre("name");
+            var useCase = new GetGenreQueryHandler(
                 repositoryMock.Object
             );
-            var request = new GetCategoryQuery(category.Id);
-            repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ReturnsAsync(category);
+            var request = new GetGenreQuery(genre.Id);
+            repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ReturnsAsync(genre);
 
             // Act
             var sut = await useCase.Handle(request, It.IsAny<CancellationToken>());
@@ -34,13 +34,13 @@ namespace PlayerControl.Tests.Application.Categories
         public async Task WhenIdIsNotFoundShouldThrowNotFoundException()
         {
             // Arrange
-            var repositoryMock = new Mock<ICategoryRepository>();
-            var category = new Category("name", "description");
-            var useCase = new GetCategoryQueryHandler(
+            var repositoryMock = new Mock<IGenreRepository>();
+            var genre = new Genre("name");
+            var useCase = new GetGenreQueryHandler(
                 repositoryMock.Object
             );
-            var request = new GetCategoryQuery(category.Id);
-            repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException($"{nameof(Category)} of Id: {request.Id} could not be found"));
+            var request = new GetGenreQuery(genre.Id);
+            repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException($"{nameof(Genre)} of Id: {request.Id} could not be found"));
 
             // Act
             var sut = async () => await useCase.Handle(request, It.IsAny<CancellationToken>());

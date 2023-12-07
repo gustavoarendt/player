@@ -27,21 +27,21 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Context
             return entity;
         }
 
-        public Task Insert(TEntity entity)
+        public virtual Task Insert(TEntity entity)
         {
             _dbSet.Add(entity);
 
             return Task.CompletedTask;
         }
 
-        public Task Remove(TEntity entity)
+        public virtual Task Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
 
             return Task.CompletedTask;
         }
 
-        public Task Update(TEntity entity)
+        public virtual Task Update(TEntity entity)
         {
             _dbSet.Update(entity);
 

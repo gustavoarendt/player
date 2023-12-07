@@ -1,11 +1,12 @@
 ﻿using Moq;
-using PlayerControl.Application.UseCases.Categories.List;
+using PlayerControl.Application.UseCases.Categories.Handlers;
+using PlayerControl.Application.UseCases.Categories.Queries;
 using PlayerControl.Domain.Categories;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class ListCategoryTest
+    public class ListGenreTest
     {
         [Fact(DisplayName = nameof(ListCategory))]
         public async Task ListCategory()
@@ -15,10 +16,10 @@ namespace PlayerControl.Tests.Application.Categories
             var categoryOne = new Category("name", "description");
             var categoryTwo = new Category("name2", "description2");
             var categories = new List<Category>() { categoryOne, categoryTwo };
-            var useCase = new ListCategory(
+            var useCase = new ListCategoryQueryHandler(
                 repositoryMock.Object
             );
-            var request = new ListCategoryRequest();
+            var request = new ListCategoryQuery();
             repositoryMock.Setup(mock => mock.List()).ReturnsAsync(categories);
 
             // Act

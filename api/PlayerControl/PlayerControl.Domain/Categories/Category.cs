@@ -33,6 +33,7 @@ namespace PlayerControl.Domain.Categories
         {
             Name = name ?? Name;
             Description = description ?? Description;
+            Validate();
         }
 
         private void Validate()

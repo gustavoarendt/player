@@ -21,10 +21,6 @@ namespace PlayerControl.Application.UseCases.Categories.Handlers
         public async Task<CategoryResponseViewModel> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await _categoryRepository.GetById(request.Id);
-            if (category is null)
-            {
-                throw new NotFoundException($"{nameof(category)} with Id: {request.Id} could not be found");
-            }
             await _categoryRepository.Remove(category);
             await _unitOfWork.Commit();
 

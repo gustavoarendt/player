@@ -15,6 +15,11 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Categories
             _categories = context.Set<Category>();
         }
 
+        public async Task<IEnumerable<Guid>> GetIdListByIds()
+        {
+            return await Task.FromResult(_categories.AsQueryable().AsNoTracking().Select(x => x.Id));
+        }
+
         public async Task<IEnumerable<Category>> List()
         {
             return await Task.FromResult(_categories.AsQueryable().AsNoTracking().Where(c => c.IsActive));
