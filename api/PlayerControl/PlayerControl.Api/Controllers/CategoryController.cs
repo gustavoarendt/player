@@ -49,9 +49,9 @@ namespace PlayerControl.Api.Controllers
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(CategoryResponseModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromBody] UpdateCategoryRequest request)
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateCategoryApiRequest request)
         {
-            var result = await _mediator.Send(request);
+            var result = await _mediator.Send(new UpdateCategoryRequest(id, request.Name, request.Description, request.IsActive));
             return Ok(result);
         }
     }
