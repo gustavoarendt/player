@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,13 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.22" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PlayerControl.Application\PlayerControl.Application.csproj" />
-    <ProjectReference Include="..\PlayerControl.Domain\PlayerControl.Domain.csproj" />
+    <ProjectReference Include="..\PlayerControl.Infrastructure.Data\PlayerControl.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace PlayerControl.Domain.Commons
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PlayerControl.Domain.Commons
 {
     public abstract class Entity
     {
@@ -9,7 +11,7 @@
         }
 
         public Guid Id { get; protected set; }
-        public DateTime CreatedAt { get; protected set; }
+        public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
 
     }
 }

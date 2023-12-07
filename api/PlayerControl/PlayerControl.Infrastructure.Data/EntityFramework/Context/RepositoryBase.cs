@@ -21,7 +21,7 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Context
 
             if (entity == null)
             {
-                throw new NotFoundException($"{nameof(TEntity)} of Id: {id} could not be found");
+                throw new NotFoundException($"{nameof(Entity)} of Id: {id} could not be found");
             }
 
             return entity;

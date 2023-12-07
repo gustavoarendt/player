@@ -14,7 +14,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Infrastructure.Data", "PlayerControl.Infrastructure.Data\PlayerControl.Infrastructure.Data.csproj", "{4F4E5E56-FE18-4553-9A63-DDFBD36D5CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerControl.Api", "PlayerControl.Api\PlayerControl.Api.csproj", "{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Api", "PlayerControl.Api\PlayerControl.Api.csproj", "{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF} = {2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}
+		{7D9B16A7-398E-4118-BD9A-17E598244852} = {7D9B16A7-398E-4118-BD9A-17E598244852}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerControl.Infrastructure.CrossCutting", "PlayerControl.Infrastructure.CrossCutting\PlayerControl.Infrastructure.CrossCutting.csproj", "{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +48,10 @@ Global
 		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F80C3B35-81F3-40B8-82DF-0AF3F07E7A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBAB7CD-9A19-4E8F-B894-137E5102A1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

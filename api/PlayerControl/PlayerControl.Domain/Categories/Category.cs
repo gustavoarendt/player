@@ -29,7 +29,7 @@ namespace PlayerControl.Domain.Categories
             Validate();
         }
 
-        public void UpdateData(string name, string description)
+        public void UpdateData(string? name, string? description)
         {
             Name = name ?? Name;
             Description = description ?? Description;
