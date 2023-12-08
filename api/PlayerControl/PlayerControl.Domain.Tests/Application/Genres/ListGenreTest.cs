@@ -16,10 +16,10 @@ namespace PlayerControl.Tests.Application.Genres
             var genreOne = new Genre("name");
             var genreTwo = new Genre("name2");
             var categories = new List<Genre>() { genreOne, genreTwo };
-            var useCase = new GetListQueryHandler(
+            var useCase = new ListGenreQueryHandler(
                 repositoryMock.Object
             );
-            var request = new GetListQuery();
+            var request = new ListGenreQuery();
             repositoryMock.Setup(mock => mock.List()).ReturnsAsync(categories);
 
             // Act

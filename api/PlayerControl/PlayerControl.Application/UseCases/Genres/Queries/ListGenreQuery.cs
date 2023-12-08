@@ -3,7 +3,7 @@ using PlayerControl.Application.UseCases.Genres.Models;
 
 namespace PlayerControl.Application.UseCases.Genres.Queries
 {
-    public record GetListQuery() : IRequest<IReadOnlyCollection<GenreViewModel>>
+    public record ListGenreQuery() : IRequest<IReadOnlyCollection<GenreViewModel>>
     {
     }
 }

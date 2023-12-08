@@ -57,7 +57,7 @@ namespace PlayerControl.Api.Controllers
         [ProducesResponseType(typeof(GenreViewModel), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _mediator.Send(new GetListQuery());
+            var result = await _mediator.Send(new ListGenreQuery());
             return Ok(result);
         }
     }

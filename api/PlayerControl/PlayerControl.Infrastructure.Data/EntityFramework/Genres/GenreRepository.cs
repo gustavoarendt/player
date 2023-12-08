@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PlayerControl.Application.Exceptions;
+using PlayerControl.Domain.Commons;
 using PlayerControl.Domain.Genres;
 using PlayerControl.Domain.Repositories;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;
@@ -18,7 +20,27 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres
 
         public async Task<IEnumerable<Genre>> List()
         {
-            return await Task.FromResult(_genres.AsQueryable().AsNoTracking().Where(c => c.IsActive));
+            var genres = await _genres.AsNoTracking().Where(c => c.IsActive).ToListAsync();
+            foreach (var genre in genres)
+            {
+                var genreCategories = _genresCategories.Where(gc => gc.GenreId == genre.Id).ToList();
+
+                genre.UpdateGenresCategories(genreCategories);
+            }
+            return genres;
+        }
+
+        public override async Task<Genre> GetById(Guid id)
+        {
+            var genre = await _genres.FirstOrDefaultAsync(x => x.Id == id);
+            if (genre == null)
+            {
+                throw new NotFoundException($"{nameof(Entity)} of Id: {id} could not be found");
+            }
+            var genreCategories = _genresCategories.Where(gc => gc.GenreId == genre.Id).ToList();
+
+            genre.UpdateGenresCategories(genreCategories);
+            return genre;
         }
 
         public override async Task Insert(Genre genre)

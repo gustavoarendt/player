@@ -56,6 +56,11 @@ namespace PlayerControl.Domain.Genres
             Validate();
         }
 
+        public void UpdateGenresCategories(ICollection<GenreCategory> genresCategories)
+        {
+            GenreCategories = genresCategories;
+        }
+
         private void Validate()
         {
             DomainValidation.IsNullOrWhitespace(Name, nameof(Name));

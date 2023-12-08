@@ -16,5 +16,10 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres
         public Guid CategoryId { get; private set; }
         public Genre? Genre { get; private set; }
         public Category? Category { get; private set; }
+
+        public void AddCategory(Category category)
+        {
+            Category = category;
+        }
     }
 }

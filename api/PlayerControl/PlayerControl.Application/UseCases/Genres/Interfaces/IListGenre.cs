@@ -4,7 +4,7 @@ using PlayerControl.Application.UseCases.Genres.Queries;
 
 namespace PlayerControl.Application.UseCases.Genres.Interfaces
 {
-    public interface IGetList : IRequestHandler<GetListQuery, IReadOnlyCollection<GenreViewModel>>
+    public interface IListGenre : IRequestHandler<ListGenreQuery, IReadOnlyCollection<GenreViewModel>>
     {
     }
 }

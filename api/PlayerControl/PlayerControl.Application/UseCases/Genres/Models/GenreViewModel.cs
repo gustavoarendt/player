@@ -2,11 +2,12 @@
 
 namespace PlayerControl.Application.UseCases.Genres.Models
 {
-    public record GenreViewModel(Guid Id,  string Name, bool IsActive, DateTime CreatedAt, IReadOnlyList<Guid> CategoryIds)
+    public record GenreViewModel(Guid Id,  string Name, bool IsActive, DateTime CreatedAt, IEnumerable<GenreCategoryViewModel> CategoryIds)
     {
         public static GenreViewModel FromEntity(Genre genre)
         {
-            return new GenreViewModel(genre.Id, genre.Name, genre.IsActive, genre.CreatedAt, genre.CategoryIds);
+            var genreCategories = GenreCategoryViewModel.FromGenre(genre);
+            return new GenreViewModel(genre.Id, genre.Name, genre.IsActive, genre.CreatedAt, genreCategories);
         }
     }
 }

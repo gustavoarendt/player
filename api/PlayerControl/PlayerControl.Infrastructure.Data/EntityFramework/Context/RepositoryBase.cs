@@ -15,7 +15,7 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Context
             _dbSet = _context.Set<TEntity>();
         }
 
-        public async Task<TEntity> GetById(Guid id)
+        public virtual async Task<TEntity> GetById(Guid id)
         {
             var entity = await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
 
