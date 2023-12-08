@@ -2,7 +2,7 @@
 using PlayerControl.Application.Interfaces;
 using PlayerControl.Application.UseCases.Categories.Commands;
 using PlayerControl.Application.UseCases.Categories.Handlers;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories

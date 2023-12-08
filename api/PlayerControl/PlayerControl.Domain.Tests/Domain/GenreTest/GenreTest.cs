@@ -1,4 +1,4 @@
-﻿using PlayerControl.Domain.Genres;
+﻿using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Validations;
 
 namespace PlayerControl.Tests.Domain.GenreTest

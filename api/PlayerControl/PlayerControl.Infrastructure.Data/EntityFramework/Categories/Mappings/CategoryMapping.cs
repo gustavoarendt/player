@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 
 namespace PlayerControl.Infrastructure.Data.EntityFramework.Categories.Mappings
 {

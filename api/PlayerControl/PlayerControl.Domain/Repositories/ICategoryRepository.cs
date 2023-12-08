@@ -1,5 +1,5 @@
-﻿using PlayerControl.Domain.Categories;
-using PlayerControl.Domain.Commons;
+﻿using PlayerControl.Domain.Commons;
+using PlayerControl.Domain.Entities.Categories;
 
 namespace PlayerControl.Domain.Repositories
 {

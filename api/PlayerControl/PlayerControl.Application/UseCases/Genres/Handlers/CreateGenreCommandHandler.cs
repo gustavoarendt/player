@@ -3,7 +3,7 @@ using PlayerControl.Application.Interfaces;
 using PlayerControl.Application.UseCases.Genres.Commands;
 using PlayerControl.Application.UseCases.Genres.Interfaces;
 using PlayerControl.Application.UseCases.Genres.Models;
-using PlayerControl.Domain.Genres;
+using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Application.UseCases.Genres.Handlers

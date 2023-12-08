@@ -1,8 +1,7 @@
-﻿using PlayerControl.Domain.Categories;
-using PlayerControl.Domain.Commons;
-using PlayerControl.Domain.Genres;
+﻿using PlayerControl.Domain.Commons;
+using PlayerControl.Domain.Entities.Categories;
 
-namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres
+namespace PlayerControl.Domain.Entities.Genres
 {
     public class GenreCategory : Entity
     {

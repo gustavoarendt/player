@@ -1,7 +1,7 @@
 ﻿using Moq;
 using PlayerControl.Application.UseCases.Categories.Handlers;
 using PlayerControl.Application.UseCases.Categories.Queries;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories

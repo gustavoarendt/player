@@ -1,8 +1,7 @@
 ﻿using PlayerControl.Domain.Commons;
 using PlayerControl.Domain.Validations;
-using PlayerControl.Infrastructure.Data.EntityFramework.Genres;
 
-namespace PlayerControl.Domain.Genres
+namespace PlayerControl.Domain.Entities.Genres
 {
     public class Genre : Entity
     {

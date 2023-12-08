@@ -2,7 +2,7 @@
 using PlayerControl.Application.UseCases.Categories.Commands;
 using PlayerControl.Application.UseCases.Categories.Interfaces;
 using PlayerControl.Application.UseCases.Categories.Models;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Application.UseCases.Categories.Handlers

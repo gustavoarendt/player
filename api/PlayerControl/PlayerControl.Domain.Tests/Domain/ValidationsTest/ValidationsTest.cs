@@ -1,4 +1,4 @@
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 using PlayerControl.Domain.Validations;
 
 namespace PlayerControl.Tests.Domain.ValidationsTest

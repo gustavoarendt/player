@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PlayerControl.Domain.Entities.Genres;
 
 namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres.Mappings
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PlayerControl.Domain.Categories;
+using PlayerControl.Domain.Entities.Categories;
 using PlayerControl.Domain.Repositories;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;
 

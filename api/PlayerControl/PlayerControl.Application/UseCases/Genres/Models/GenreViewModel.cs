@@ -1,4 +1,4 @@
-﻿using PlayerControl.Domain.Genres;
+﻿using PlayerControl.Domain.Entities.Genres;
 
 namespace PlayerControl.Application.UseCases.Genres.Models
 {

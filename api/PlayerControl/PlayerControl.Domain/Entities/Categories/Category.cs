@@ -1,7 +1,7 @@
 ﻿using PlayerControl.Domain.Commons;
 using PlayerControl.Domain.Validations;
 
-namespace PlayerControl.Domain.Categories
+namespace PlayerControl.Domain.Entities.Categories
 {
     public class Category : Entity
     {

@@ -2,7 +2,7 @@
 using PlayerControl.Application.Interfaces;
 using PlayerControl.Application.UseCases.Genres.Commands;
 using PlayerControl.Application.UseCases.Genres.Handlers;
-using PlayerControl.Domain.Genres;
+using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Genres

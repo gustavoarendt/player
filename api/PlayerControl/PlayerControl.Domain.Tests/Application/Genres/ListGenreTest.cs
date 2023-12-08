@@ -1,7 +1,7 @@
 ﻿using Moq;
 using PlayerControl.Application.UseCases.Genres.Handlers;
 using PlayerControl.Application.UseCases.Genres.Queries;
-using PlayerControl.Domain.Genres;
+using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Genres
@@ -13,11 +13,13 @@ namespace PlayerControl.Tests.Application.Genres
         {
             // Arrange
             var repositoryMock = new Mock<IGenreRepository>();
+            var categoryRepositoryMock = new Mock<ICategoryRepository>();
             var genreOne = new Genre("name");
             var genreTwo = new Genre("name2");
             var categories = new List<Genre>() { genreOne, genreTwo };
             var useCase = new ListGenreQueryHandler(
-                repositoryMock.Object
+                repositoryMock.Object,
+                categoryRepositoryMock.Object
             );
             var request = new ListGenreQuery();
             repositoryMock.Setup(mock => mock.List()).ReturnsAsync(categories);

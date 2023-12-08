@@ -2,7 +2,7 @@
 using PlayerControl.Application.Exceptions;
 using PlayerControl.Application.UseCases.Genres.Handlers;
 using PlayerControl.Application.UseCases.Genres.Queries;
-using PlayerControl.Domain.Genres;
+using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Genres
@@ -14,9 +14,11 @@ namespace PlayerControl.Tests.Application.Genres
         {
             // Arrange
             var repositoryMock = new Mock<IGenreRepository>();
+            var categoryRepositoryMock = new Mock<ICategoryRepository>();
             var genre = new Genre("name");
             var useCase = new GetGenreQueryHandler(
-                repositoryMock.Object
+                repositoryMock.Object,
+                categoryRepositoryMock.Object
             );
             var request = new GetGenreQuery(genre.Id);
             repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ReturnsAsync(genre);
@@ -35,9 +37,11 @@ namespace PlayerControl.Tests.Application.Genres
         {
             // Arrange
             var repositoryMock = new Mock<IGenreRepository>();
+            var categoryRepositoryMock = new Mock<ICategoryRepository>();
             var genre = new Genre("name");
             var useCase = new GetGenreQueryHandler(
-                repositoryMock.Object
+                repositoryMock.Object,
+                categoryRepositoryMock.Object
             );
             var request = new GetGenreQuery(genre.Id);
             repositoryMock.Setup(mock => mock.GetById(It.IsAny<Guid>())).ThrowsAsync(new NotFoundException($"{nameof(Genre)} of Id: {request.Id} could not be found"));

@@ -1,4 +1,4 @@
-﻿using PlayerControl.Domain.Categories;
+﻿using PlayerControl.Domain.Entities.Categories;
 
 namespace PlayerControl.Application.UseCases.Categories.Models
 {

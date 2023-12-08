@@ -1,5 +1,5 @@
 ﻿using PlayerControl.Domain.Commons;
-using PlayerControl.Domain.Genres;
+using PlayerControl.Domain.Entities.Genres;
 
 namespace PlayerControl.Domain.Repositories
 {
