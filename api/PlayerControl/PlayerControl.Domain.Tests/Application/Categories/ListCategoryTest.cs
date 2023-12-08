@@ -6,7 +6,7 @@ using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class ListGenreTest
+    public class ListCategoryTest
     {
         [Fact(DisplayName = nameof(ListCategory))]
         public async Task ListCategory()

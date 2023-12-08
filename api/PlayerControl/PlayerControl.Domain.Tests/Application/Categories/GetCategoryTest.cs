@@ -7,7 +7,7 @@ using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class GetGenreTest
+    public class GetCategoryTest
     {
         [Fact(DisplayName = nameof(GetCategory))]
         public async Task GetCategory()

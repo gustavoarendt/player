@@ -14,4 +14,8 @@
     <ProjectReference Include="..\PlayerControl.Domain\PlayerControl.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Videos\Queries\" />
+  </ItemGroup>
+
 </Project>

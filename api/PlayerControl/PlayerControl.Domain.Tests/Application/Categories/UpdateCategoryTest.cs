@@ -9,7 +9,7 @@ using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class UpdateGenreTest
+    public class UpdateCategoryTest
     {
         [Fact(DisplayName = nameof(UpdateCategory))]
         public async Task UpdateCategory()

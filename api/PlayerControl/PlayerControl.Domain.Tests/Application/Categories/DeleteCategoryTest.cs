@@ -9,7 +9,7 @@ using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Tests.Application.Categories
 {
-    public class DeleteGenreTest
+    public class DeleteCategoryTest
     {
         [Fact(DisplayName = nameof(DeleteCategory))]
         public async Task DeleteCategory()

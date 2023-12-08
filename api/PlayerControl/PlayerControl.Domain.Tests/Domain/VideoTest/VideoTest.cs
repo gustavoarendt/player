@@ -1,4 +1,5 @@
 ﻿using PlayerControl.Domain.Entities.Videos;
+using PlayerControl.Domain.Entities.Videos.Enums;
 
 namespace PlayerControl.Tests.Domain.VideoTest
 {
@@ -12,9 +13,10 @@ namespace PlayerControl.Tests.Domain.VideoTest
             var description = "O jovem programador Thomas Anderson é atormentado por estranhos pesadelos em que está sempre conectado por cabos a um imenso sistema de computadores do futuro. À medida que o sonho se repete, ele começa a desconfiar da realidade.";
             var year = 1999;
             var duration = 136;
+            var rating = Rating.R14;
 
             // Act
-            var video = new Video(title, description, year, duration);
+            var video = new Video(title, description, year, duration, rating);
 
             // Assert
             Assert.Equal(title, video.Title);
