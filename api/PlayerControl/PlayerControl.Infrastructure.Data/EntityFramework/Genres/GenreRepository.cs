@@ -70,5 +70,10 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres
             _genres.Remove(genre);
             return Task.CompletedTask;
         }
+
+        public async Task<IEnumerable<Guid>> GetIdListByIds(ICollection<Guid> ids)
+        {
+            return await Task.FromResult(_genres.AsQueryable().AsNoTracking().Where(c => ids.Contains(c.Id)).Select(x => x.Id));
+        }
     }
 }

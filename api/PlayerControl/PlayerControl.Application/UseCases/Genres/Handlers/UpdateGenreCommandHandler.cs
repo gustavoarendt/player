@@ -45,8 +45,8 @@ namespace PlayerControl.Application.UseCases.Genres.Handlers
 
         private async Task ValidateCategoryIds(UpdateGenreCommand request)
         {
-            var existingCategoryIds = await _categoryRepository.GetIdListByIds();
-            var notFoundIds = request.CategoryIds!.FindAll(x => !existingCategoryIds.Contains(x));
+            var existingCategoryIds = await _categoryRepository.GetIdListByIds(request.CategoryIds!);
+            var notFoundIds = request.CategoryIds!.FindAll(c => !existingCategoryIds.Contains(c));
             if (notFoundIds.Any())
             {
                 var notFoundItems = String.Join(", ", notFoundIds);

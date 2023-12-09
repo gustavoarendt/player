@@ -6,5 +6,6 @@ namespace PlayerControl.Domain.Repositories
     public interface IGenreRepository : IRepository<Genre>
     {
         public Task<IEnumerable<Genre>> List();
+        public Task<IEnumerable<Guid>> GetIdListByIds(ICollection<Guid> ids);
     }
 }

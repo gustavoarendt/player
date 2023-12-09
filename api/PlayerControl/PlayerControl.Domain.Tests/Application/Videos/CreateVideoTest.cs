@@ -20,16 +20,17 @@ namespace PlayerControl.Tests.Application.Videos
             var year = 1999;
             var duration = 136;
             var rating = Rating.R14;
-            var categoryIds = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid() };
             var repositoryMock = new Mock<IVideoRepository>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
+            var genreRepositoryMock = new Mock<IGenreRepository>();
             var useCase = new CreateVideoCommandHandler(
                 repositoryMock.Object,
                 unitOfWorkMock.Object,
-                categoryRepositoryMock.Object
+                categoryRepositoryMock.Object,
+                genreRepositoryMock.Object
             );
-            var request = new CreateVideoCommand(id, title, description, year, duration, rating, categoryIds);
+            var request = new CreateVideoCommand(id, title, description, year, duration, rating);
 
             // Act
             var sut = await useCase.Handle(request, It.IsAny<CancellationToken>());

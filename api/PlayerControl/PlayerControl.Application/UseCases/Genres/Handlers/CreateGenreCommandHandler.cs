@@ -37,12 +37,18 @@ namespace PlayerControl.Application.UseCases.Genres.Handlers
 
         private async Task ValidateCategoryIds(CreateGenreCommand request)
         {
-            var existingCategoryIds = await _categoryRepository.GetIdListByIds();
-            var notFoundIds = request.CategoryIds!.FindAll(x => !existingCategoryIds.Contains(x));
-            if (notFoundIds.Any())
+            if (request.CategoryIds is not null && request.CategoryIds.Any())
             {
-                var notFoundItems = String.Join(", ", notFoundIds);
-                throw new NotFoundException($"The Following Ids could not be found: {notFoundItems}");
+                var dbCategories = await _categoryRepository.GetIdListByIds(request.CategoryIds.ToList());
+                if (dbCategories.Count() < request.CategoryIds.Count)
+                {
+                    var notFound = request.CategoryIds.ToList().FindAll(categoryId => !dbCategories.Contains(categoryId));
+                    if (notFound.Any())
+                    {
+                        var notFoundItems = String.Join(", ", notFound);
+                        throw new NotFoundException($"The Following Ids could not be found: {notFoundItems}");
+                    }
+                }
             }
         }
     }
