@@ -56,5 +56,15 @@ namespace PlayerControl.Domain.Entities.Videos
         {
             new VideoValidator(this, handler).Validate();
         }
+
+        public void UpdateImage(string imagePath)
+        {
+            Image = new Image(imagePath);
+        }
+
+        public void UpdateMedia(string videoPath)
+        {
+            Media = new Media(videoPath);
+        }
     }
 }
