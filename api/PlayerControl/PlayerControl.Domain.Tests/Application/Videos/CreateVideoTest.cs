@@ -1,4 +1,5 @@
 ﻿using Moq;
+using PlayerControl.Application.Extensions;
 using PlayerControl.Application.Interfaces;
 using PlayerControl.Application.UseCases.Videos.Commands;
 using PlayerControl.Application.UseCases.Videos.Handlers;
@@ -45,7 +46,7 @@ namespace PlayerControl.Tests.Application.Videos
             Assert.Equal(description, sut.Description);
             Assert.Equal(year, sut.Year);
             Assert.Equal(duration, sut.Duration);
-            Assert.Equal(rating, sut.Rating);
+            Assert.Equal(rating.GetDescription(), sut.Rating);
             Assert.True(sut.Id != Guid.Empty);
             Assert.True(sut.CreatedAt != DateTime.MinValue);
         }

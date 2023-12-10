@@ -4,6 +4,7 @@ using PlayerControl.Domain.Repositories;
 using PlayerControl.Infrastructure.Data.EntityFramework.Categories;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;
 using PlayerControl.Infrastructure.Data.EntityFramework.Genres;
+using PlayerControl.Infrastructure.Data.EntityFramework.Videos;
 
 namespace PlayerControl.Infrastructure.CrossCutting.IoC
 {
@@ -13,6 +14,7 @@ namespace PlayerControl.Infrastructure.CrossCutting.IoC
         {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
