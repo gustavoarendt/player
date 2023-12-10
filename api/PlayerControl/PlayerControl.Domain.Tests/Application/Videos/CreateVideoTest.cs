@@ -24,11 +24,13 @@ namespace PlayerControl.Tests.Application.Videos
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var categoryRepositoryMock = new Mock<ICategoryRepository>();
             var genreRepositoryMock = new Mock<IGenreRepository>();
+            var storeServiceMock = new Mock<IStoreService>();
             var useCase = new CreateVideoCommandHandler(
                 repositoryMock.Object,
                 unitOfWorkMock.Object,
                 categoryRepositoryMock.Object,
-                genreRepositoryMock.Object
+                genreRepositoryMock.Object,
+                storeServiceMock.Object
             );
             var request = new CreateVideoCommand(id, title, description, year, duration, rating);
 

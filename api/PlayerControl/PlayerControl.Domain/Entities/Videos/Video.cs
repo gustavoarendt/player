@@ -66,5 +66,14 @@ namespace PlayerControl.Domain.Entities.Videos
         {
             Media = new Media(videoPath);
         }
+
+        public void UpdateData(string? title, string? description, int? year, int? duration, Rating? rating)
+        {
+            Title = title ?? Title;
+            Description = description ?? Description;
+            Year = year ?? Year;
+            Duration = duration ?? Duration;
+            Rating = rating ?? Rating;
+        }
     }
 }

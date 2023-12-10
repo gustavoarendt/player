@@ -5,5 +5,6 @@ namespace PlayerControl.Domain.Repositories
 {
     public interface IVideoRepository : IRepository<Video>
     {
+        Task<IEnumerable<Video>> List();
     }
 }
