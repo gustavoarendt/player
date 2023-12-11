@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;
@@ -11,9 +12,10 @@ using PlayerControl.Infrastructure.Data.EntityFramework.Context;
 namespace PlayerControl.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(EntityFrameworkDbContext))]
-    partial class EntityFrameworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231211135119_GenreCategoryAdjust")]
+    partial class GenreCategoryAdjust
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,12 +84,10 @@ namespace PlayerControl.Infrastructure.Data.Migrations
             modelBuilder.Entity("PlayerControl.Domain.Entities.Genres.GenreCategory", b =>
                 {
                     b.Property<Guid>("GenreId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_genre");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_category");
+                        .HasColumnType("uuid");
 
                     b.HasKey("GenreId", "CategoryId");
 
@@ -104,8 +104,7 @@ namespace PlayerControl.Infrastructure.Data.Migrations
                         .HasColumnName("id_video");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("created_at");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -139,12 +138,10 @@ namespace PlayerControl.Infrastructure.Data.Migrations
             modelBuilder.Entity("PlayerControl.Domain.Entities.Videos.VideoCategories", b =>
                 {
                     b.Property<Guid>("VideoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_video");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_category");
+                        .HasColumnType("uuid");
 
                     b.HasKey("VideoId", "CategoryId");
 
@@ -156,12 +153,10 @@ namespace PlayerControl.Infrastructure.Data.Migrations
             modelBuilder.Entity("PlayerControl.Domain.Entities.Videos.VideoGenres", b =>
                 {
                     b.Property<Guid>("VideoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_video");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("GenreId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_genre");
+                        .HasColumnType("uuid");
 
                     b.HasKey("VideoId", "GenreId");
 
@@ -207,8 +202,7 @@ namespace PlayerControl.Infrastructure.Data.Migrations
                                 .HasColumnName("file_path");
 
                             b1.Property<int>("Status")
-                                .HasColumnType("integer")
-                                .HasColumnName("media_status");
+                                .HasColumnType("integer");
 
                             b1.HasKey("VideoId");
 

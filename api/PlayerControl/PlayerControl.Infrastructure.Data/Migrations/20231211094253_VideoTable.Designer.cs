@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;
@@ -11,9 +12,10 @@ using PlayerControl.Infrastructure.Data.EntityFramework.Context;
 namespace PlayerControl.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(EntityFrameworkDbContext))]
-    partial class EntityFrameworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231211094253_VideoTable")]
+    partial class VideoTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,17 +83,28 @@ namespace PlayerControl.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("PlayerControl.Domain.Entities.Genres.GenreCategory", b =>
                 {
-                    b.Property<Guid>("GenreId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id_genre");
+                        .HasColumnName("id_genre_category");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
                         .HasColumnName("id_category");
 
-                    b.HasKey("GenreId", "CategoryId");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<Guid>("GenreId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id_genre");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("GenreId");
 
                     b.ToTable("genre_category", (string)null);
                 });
@@ -104,8 +117,7 @@ namespace PlayerControl.Infrastructure.Data.Migrations
                         .HasColumnName("id_video");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("created_at");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -139,35 +151,31 @@ namespace PlayerControl.Infrastructure.Data.Migrations
             modelBuilder.Entity("PlayerControl.Domain.Entities.Videos.VideoCategories", b =>
                 {
                     b.Property<Guid>("VideoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_video");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_category");
+                        .HasColumnType("uuid");
 
                     b.HasKey("VideoId", "CategoryId");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("video_category", (string)null);
+                    b.ToTable("VideoCategories");
                 });
 
             modelBuilder.Entity("PlayerControl.Domain.Entities.Videos.VideoGenres", b =>
                 {
                     b.Property<Guid>("VideoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_video");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("GenreId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_genre");
+                        .HasColumnType("uuid");
 
                     b.HasKey("VideoId", "GenreId");
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("video_genre", (string)null);
+                    b.ToTable("VideoGenres");
                 });
 
             modelBuilder.Entity("PlayerControl.Domain.Entities.Genres.GenreCategory", b =>
@@ -207,8 +215,7 @@ namespace PlayerControl.Infrastructure.Data.Migrations
                                 .HasColumnName("file_path");
 
                             b1.Property<int>("Status")
-                                .HasColumnType("integer")
-                                .HasColumnName("media_status");
+                                .HasColumnType("integer");
 
                             b1.HasKey("VideoId");
 

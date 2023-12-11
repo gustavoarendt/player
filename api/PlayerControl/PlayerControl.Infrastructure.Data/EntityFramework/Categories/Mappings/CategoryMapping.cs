@@ -16,6 +16,8 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Categories.Mappings
             builder.Property(c => c.Description).HasColumnName("description");
             builder.Property(c => c.IsActive).HasColumnName("is_active");
             builder.Property(c => c.CreatedAt).HasColumnName("created_at");
+
+            builder.Ignore(c => c.Events);
         }
     }
 }

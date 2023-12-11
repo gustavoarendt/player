@@ -19,16 +19,8 @@ namespace PlayerControl.Application.UseCases.Genres.Handlers
         public async Task<IReadOnlyCollection<GenreViewModel>> Handle(ListGenreQuery request, CancellationToken cancellationToken)
         {
             var genres = await _genreRepository.List();
-            var categories = await _categoryRepository.List();
 
-            var updatedGenres = genres.Select(genre =>
-            {
-                foreach (var gc in genre.GenreCategories)
-                {
-                    gc.AddCategory(categories.FirstOrDefault(c => c.Id == gc.CategoryId)!);
-                }
-                return GenreViewModel.FromEntity(genre);
-            }).ToList();
+            var updatedGenres = genres.Select(genre => GenreViewModel.FromEntity(genre)).ToList();
 
             return updatedGenres;
         }

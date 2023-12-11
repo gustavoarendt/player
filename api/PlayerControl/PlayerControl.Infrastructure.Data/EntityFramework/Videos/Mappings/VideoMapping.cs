@@ -17,9 +17,14 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Videos.Mappings
             builder.Property(v => v.Year).HasColumnName("year");
             builder.Property(v => v.Duration).HasColumnName("duration");
             builder.Property(v => v.Rating).HasColumnName("rating");
+            builder.Property(v => v.CreatedAt).HasColumnName("created_at");
+
             builder.OwnsOne(v => v.Image, image => image.Property(i => i.Path).HasColumnName("image_path"));
             builder.OwnsOne(v => v.Media, media => media.Property(m => m.FilePath).HasColumnName("file_path"));
             builder.OwnsOne(v => v.Media, media => media.Property(m => m.EncodedPath).HasColumnName("encoded_path"));
+            builder.OwnsOne(v => v.Media, media => media.Property(m => m.Status).HasColumnName("media_status"));
+
+            builder.Ignore(c => c.Events);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlayerControl.Application.Exceptions;
 using PlayerControl.Domain.Commons;
-using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Entities.Videos;
 using PlayerControl.Domain.Repositories;
 using PlayerControl.Infrastructure.Data.EntityFramework.Context;

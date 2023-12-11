@@ -20,6 +20,8 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres.Mappings
                 .HasMany(g => g.GenreCategories)
                 .WithOne(gc => gc.Genre)
                 .HasForeignKey(gc => gc.GenreId);
+
+            builder.Ignore(c => c.Events);
         }
     }
 }

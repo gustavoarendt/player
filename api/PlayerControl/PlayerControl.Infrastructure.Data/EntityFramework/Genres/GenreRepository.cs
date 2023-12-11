@@ -32,14 +32,13 @@ namespace PlayerControl.Infrastructure.Data.EntityFramework.Genres
 
         public override async Task<Genre> GetById(Guid id)
         {
-            var genre = await _genres.FirstOrDefaultAsync(x => x.Id == id);
+            var genre = await _genres.FirstOrDefaultAsync(g => g.Id == id);
             if (genre == null)
             {
                 throw new NotFoundException($"{nameof(Entity)} of Id: {id} could not be found");
             }
-            var genreCategories = _genresCategories.Where(gc => gc.GenreId == genre.Id).ToList();
-
-            genre.UpdateGenresCategories(genreCategories);
+            var genreCategories = await _genresCategories.Where(gc => gc.GenreId == genre.Id).Select(gc => gc.CategoryId).ToListAsync();
+            genreCategories.ForEach(genre.AddCategoryId);
             return genre;
         }
 

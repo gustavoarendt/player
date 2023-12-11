@@ -1,6 +1,7 @@
 ﻿using PlayerControl.Application.UseCases.Genres.Interfaces;
 using PlayerControl.Application.UseCases.Genres.Models;
 using PlayerControl.Application.UseCases.Genres.Queries;
+using PlayerControl.Domain.Entities.Genres;
 using PlayerControl.Domain.Repositories;
 
 namespace PlayerControl.Application.UseCases.Genres.Handlers
@@ -19,12 +20,6 @@ namespace PlayerControl.Application.UseCases.Genres.Handlers
         public async Task<GenreViewModel> Handle(GetGenreQuery request, CancellationToken cancellationToken)
         {
             var genre = await _genreRepository.GetById(request.Id);
-            var categories = await _categoryRepository.List();
-
-            foreach (var gc in genre.GenreCategories)
-            {
-                gc.AddCategory(categories.FirstOrDefault(c => c.Id == gc.CategoryId)!);
-            }
             return GenreViewModel.FromEntity(genre);
         }
     }

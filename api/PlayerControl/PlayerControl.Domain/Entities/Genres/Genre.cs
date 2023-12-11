@@ -15,8 +15,8 @@ namespace PlayerControl.Domain.Entities.Genres
 
         public string Name { get; private set; }
         public bool IsActive { get; private set; }
-        public IReadOnlyList<Guid> CategoryIds => _categoryIds.AsReadOnly();
         private List<Guid> _categoryIds;
+        public IReadOnlyList<Guid> CategoryIds => _categoryIds.AsReadOnly();
 
         public ICollection<GenreCategory> GenreCategories { get; private set; } = new List<GenreCategory>();
 

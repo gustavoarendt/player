@@ -3,7 +3,7 @@ using PlayerControl.Domain.Entities.Categories;
 
 namespace PlayerControl.Domain.Entities.Genres
 {
-    public class GenreCategory : Entity
+    public class GenreCategory
     {
         public GenreCategory(Guid genreId, Guid categoryId) : base()
         {
@@ -15,10 +15,5 @@ namespace PlayerControl.Domain.Entities.Genres
         public Guid CategoryId { get; private set; }
         public Genre? Genre { get; private set; }
         public Category? Category { get; private set; }
-
-        public void AddCategory(Category category)
-        {
-            Category = category;
-        }
     }
 }

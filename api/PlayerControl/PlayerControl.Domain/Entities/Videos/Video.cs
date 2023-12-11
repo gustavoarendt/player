@@ -1,6 +1,7 @@
 ﻿using PlayerControl.Domain.Commons;
 using PlayerControl.Domain.Entities.Videos.Enums;
 using PlayerControl.Domain.Entities.Videos.ValueObjects;
+using PlayerControl.Domain.Events;
 using PlayerControl.Domain.Validations;
 
 namespace PlayerControl.Domain.Entities.Videos
@@ -65,6 +66,7 @@ namespace PlayerControl.Domain.Entities.Videos
         public void UpdateMedia(string videoPath)
         {
             Media = new Media(videoPath);
+            RaiseEvent(new VideoUploadedEvent(Id, videoPath));
         }
 
         public void UpdateData(string? title, string? description, int? year, int? duration, Rating? rating)
