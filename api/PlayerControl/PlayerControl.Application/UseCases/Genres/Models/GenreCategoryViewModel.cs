@@ -8,7 +8,7 @@ namespace PlayerControl.Application.UseCases.Genres.Models
         {
             var result = genre.GenreCategories.Select(gc =>
             {
-                return new GenreCategoryViewModel(gc.CategoryId, gc.Category!.Name);
+                return new GenreCategoryViewModel(gc.CategoryId, gc.Category?.Name);
             });
             return result;
         }

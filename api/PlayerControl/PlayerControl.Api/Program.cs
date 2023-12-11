@@ -9,6 +9,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatorDependency();
 builder.Services.AddRepositoryDependency();
+builder.Services.AddServiceDependency();
+builder.Services.AddRabbitMQDependency(builder.Configuration);
 
 if (builder.Environment.IsEnvironment("Local"))
 {

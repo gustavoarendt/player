@@ -13,6 +13,17 @@ services:
       POSTGRES_DB: playercontrol
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+  
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.12.10-management
+    hostname: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
 
 networks:
   default:

@@ -6,12 +6,13 @@ namespace PlayerControl.Infrastructure.Data.Storage
     {
         public Task Delete(string? fileName)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("To be implemented");
+            return Task.CompletedTask;
         }
 
         public Task<string> Upload(string fileName, Stream fileStream)
         {
-            throw new NotImplementedException();
+            return Task.FromResult("To be implemented");
         }
     }
 }

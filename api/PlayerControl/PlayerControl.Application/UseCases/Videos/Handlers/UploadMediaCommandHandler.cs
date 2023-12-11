@@ -35,7 +35,7 @@ namespace PlayerControl.Application.UseCases.Videos.Handlers
             }
             catch (Exception)
             {
-                if (request.VideoFile is not null && video.Media is not null) await _storeService.Delete(video.Image.Path);
+                if (request.VideoFile is not null && video.Media is not null) await _storeService.Delete(video.Image!.Path);
                 throw;
             }
         }

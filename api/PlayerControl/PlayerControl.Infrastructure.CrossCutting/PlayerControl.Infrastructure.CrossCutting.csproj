@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PlayerControl.Application\PlayerControl.Application.csproj" />
     <ProjectReference Include="..\PlayerControl.Infrastructure.Data\PlayerControl.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\PlayerControl.Infrastructure.Messaging\PlayerControl.Infrastructure.Messaging.csproj" />
   </ItemGroup>
 
 </Project>

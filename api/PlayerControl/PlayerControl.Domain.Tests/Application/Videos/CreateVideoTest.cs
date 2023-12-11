@@ -15,7 +15,6 @@ namespace PlayerControl.Tests.Application.Videos
         public async Task CreateVideo()
         {
             // Arrange
-            var id = Guid.NewGuid();
             var title = "Matrix";
             var description = "O jovem programador Thomas Anderson é atormentado por estranhos pesadelos em que está sempre conectado por cabos a um imenso sistema de computadores do futuro. À medida que o sonho se repete, ele começa a desconfiar da realidade.";
             var year = 1999;
@@ -33,7 +32,7 @@ namespace PlayerControl.Tests.Application.Videos
                 genreRepositoryMock.Object,
                 storeServiceMock.Object
             );
-            var request = new CreateVideoCommand(id, title, description, year, duration, rating);
+            var request = new CreateVideoCommand(title, description, year, duration, rating);
 
             // Act
             var sut = await useCase.Handle(request, It.IsAny<CancellationToken>());
