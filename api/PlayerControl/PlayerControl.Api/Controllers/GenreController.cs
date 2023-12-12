@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PlayerControl.Api.Security;
 using PlayerControl.Application.UseCases.Genres.Commands;
 using PlayerControl.Application.UseCases.Genres.Models;
 using PlayerControl.Application.UseCases.Genres.Queries;
@@ -8,6 +10,7 @@ namespace PlayerControl.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = Roles.Admin)]
     public class GenreController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -30,6 +33,7 @@ namespace PlayerControl.Api.Controllers
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(GenreViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.User}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new GetGenreQuery(id));
@@ -55,6 +59,7 @@ namespace PlayerControl.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(GenreViewModel), StatusCodes.Status200OK)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.User}")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new ListGenreQuery());

@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PlayerControl.Api.Security;
 using PlayerControl.Application.UseCases.Categories.Commands;
 using PlayerControl.Application.UseCases.Categories.Models;
 using PlayerControl.Application.UseCases.Categories.Queries;
@@ -8,6 +10,7 @@ namespace PlayerControl.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = Roles.User)]
     public class CategoryController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -30,6 +33,7 @@ namespace PlayerControl.Api.Controllers
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.User}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             var result = await _mediator.Send(new GetCategoryQuery(id));
@@ -55,6 +59,7 @@ namespace PlayerControl.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(CategoryResponseViewModel), StatusCodes.Status200OK)]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.User}")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new ListCategoryQuery());
